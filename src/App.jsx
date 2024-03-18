@@ -13,10 +13,12 @@ function App() {
   const url = "https://test-mongo-1.onrender.com/comments"
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .post(url, postApi)
       .then((res) => {
         console.log(res);
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
