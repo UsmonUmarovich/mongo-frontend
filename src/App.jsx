@@ -71,7 +71,7 @@ function App() {
 
   const handleDeleteAll = () => {
     API.post("/delete").then((res) => {
-      alert("All comments are deleted")
+      alert(res.data.message)
       window.location.reload()
     }).catch((err) => {
       console.log(err)
