@@ -69,11 +69,18 @@ function App() {
       });
   };
 
-  useEffect(() => {
+  const handleDeleteAll = () => {
+    API.post("/delete").then((res) => {
+      alert("All comments are deleted")
+      window.location.reload()
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
     API.get("/comments")
       .then((res) => setApi(res.data))
       .catch((err) => console.log(err));
-  }, []);
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
@@ -87,6 +94,7 @@ function App() {
         <button>Submit</button>
       </form>
       <button onClick={() => window.location.reload()}>Reload</button>
+      <button onClick={() => handleDeleteAll()}>delete all</button>
       <div>
         {api.map((item, index) => {
           return (
